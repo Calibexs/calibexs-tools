@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>calibexs tools</title>
+
+<link rel="icon" type="image/svg+xml" href="https://calibexs.com/favicon.svg">
+<meta name="theme-color" content="#7c3aed">
+<meta name="description" content="calibexs network, encoding, hashing, and developer tools">
+
+<link rel="stylesheet" href="/shared-calibexs/theme.css?v=1">
+
+<style>
+:root {
+  --bg:var(--calibexs-bg);
+  --purple:var(--calibexs-purple);
+  --purple-light:var(--calibexs-purple-light);
+  --purple-soft:var(--calibexs-purple-soft);
+  --blue:var(--calibexs-blue);
+  --text:var(--calibexs-text);
+  --muted:var(--calibexs-muted);
+  --card:var(--calibexs-card);
+  --border:var(--calibexs-border);
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  min-height:100vh;
+}
+
+#particles-js {
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background:
+    radial-gradient(circle at top left,rgba(168,85,247,.20),transparent 28%),
+    radial-gradient(circle at top right,rgba(99,102,241,.16),transparent 25%),
+    radial-gradient(circle at bottom center,rgba(192,132,252,.12),transparent 30%),
+    var(--calibexs-bg);
+}
+
+.wrap {
+  position:relative;
+  z-index:2;
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px 90px;
+}
+
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:90px;
+}
+
+.logo {
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo span,
+.hero h1 span {
+  background:linear-gradient(135deg,#f5d0fe,#c084fc,var(--calibexs-blue));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.nav-links {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.nav-links a {
+  text-decoration:none;
+  color:var(--calibexs-purple-light);
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+  padding:10px 14px;
+  border-radius:999px;
+  transition:.25s;
+}
+
+.nav-links a:hover {
+  transform:translateY(-2px);
+  background:rgba(168,85,247,.12);
+  border-color:rgba(168,85,247,.35);
+}
+
+.hero {
+  padding:20px 0 60px;
+}
+
+.hero h1 {
+  margin:0;
+  font-size:clamp(70px,12vw,150px);
+  line-height:.9;
+  letter-spacing:-6px;
+  font-weight:1000;
+}
+
+.hero p {
+  max-width:700px;
+  color:var(--purple-soft);
+  font-size:19px;
+  line-height:1.8;
+  margin-top:26px;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+  gap:18px;
+}
+
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:24px;
+  backdrop-filter:blur(18px);
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.tag {
+  display:inline-block;
+  margin-bottom:15px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:rgba(168,85,247,.12);
+  border:1px solid rgba(168,85,247,.24);
+  color:var(--calibexs-purple-light);
+  font-size:12px;
+  font-weight:800;
+}
+
+h3 {
+  margin:0 0 18px;
+  font-size:24px;
+}
+
+input,
+textarea,
+select {
+  width:100%;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  color:var(--calibexs-text);
+  border-radius:14px;
+  padding:12px 14px;
+  outline:none;
+  font:inherit;
+  margin-bottom:10px;
+}
+
+textarea {
+  min-height:100px;
+  resize:vertical;
+}
+
+select option {
+  background:#12081c;
+}
+
+button {
+  border:0;
+  cursor:pointer;
+  padding:11px 16px;
+  border-radius:14px;
+  font-weight:800;
+  color:white;
+  background:linear-gradient(135deg,#9333ea,#6366f1);
+  transition:.2s;
+}
+
+button:hover {
+  transform:translateY(-2px);
+}
+
+.actions {
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.output {
+  margin-top:14px;
+  padding:14px;
+  min-height:45px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(0,0,0,.22);
+  color:var(--calibexs-purple-soft);
+  overflow-wrap:anywhere;
+  white-space:pre-wrap;
+  font-family:Consolas,monospace;
+  font-size:13px;
+}
+
+.row {
+  display:grid;
+  grid-template-columns:1fr 110px;
+  gap:10px;
+}
+
+footer {
+  margin-top:80px;
+  text-align:center;
+  color:var(--calibexs-muted-2);
+  font-size:14px;
+  opacity:.8;
+}
+
+@media(max-width:700px) {
+  nav {
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+  }
+
+  .hero h1 { letter-spacing:-3px; }
+
+  .cards {
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+<meta name="description" content="networking and developer utilities by calibexs.">
+<meta property="og:title" content="calibexs tools">
+<meta property="og:description" content="networking, subnet, DNS, hashing, encoding, UUID, and developer utilities by calibexs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tools.calibexs.com/">
+<meta property="og:site_name" content="calibexs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="calibexs tools">
+<meta name="twitter:description" content="networking and developer utilities by calibexs.">
+
+<style>
+.calibexs-home {
+    position: fixed;
+    top: 22px;
+    left: 22px;
+    z-index: 9999;
+    padding: 9px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(10,3,18,.72);
+    backdrop-filter: blur(14px);
+    color: var(--calibexs-purple-light) !important;
+    text-decoration: none !important;
+    font: 700 14px Arial,sans-serif;
+    box-shadow: 0 10px 30px rgba(0,0,0,.22);
+}
+
+.calibexs-home:hover {
+    border-color: rgba(168,85,247,.45);
+    color: #f5d0fe !important;
+}
+</style>
+
+</head>
+
+<body class="calibexs-theme">
+
+<a class="calibexs-home" href="https://calibexs.com/">
+    ← calibexs.com
+</a>
+
+
+<div id="particles-js" class="calibexs-particles"></div>
+
+<div class="wrap">
+
+<nav>
+  <div class="logo"><span>@calibexs</span></div>
+
+  <div class="nav-links">
+    <a href="https://calibexs.com/">main site</a>
+    <a href="https://status.calibexs.com/">status</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1><span>tools.</span></h1>
+  <p>
+    networking, encoding, hashing, developer, and security utilities.
+  </p>
+</section>
+
+<div class="cards">
+
+  <div class="card">
+    <div class="tag">network</div>
+    <h3>dns lookup</h3>
+
+    <div class="row">
+      <input id="dnsName" placeholder="example.com">
+      <select id="dnsType">
+        <option>A</option>
+        <option>AAAA</option>
+        <option>MX</option>
+        <option>TXT</option>
+        <option>CNAME</option>
+        <option>NS</option>
+      </select>
+    </div>
+
+    <button onclick="dnsLookup()">lookup</button>
+    <div id="dnsOutput" class="output">waiting for query</div>
+  </div>
+
+
+  <div class="card">
+    <div class="tag">network</div>
+    <h3>subnet calculator</h3>
+
+    <input id="cidr" placeholder="192.168.1.10/24">
+    <button onclick="subnet()">calculate</button>
+
+    <div id="subnetOutput" class="output">enter an IPv4 CIDR</div>
+  </div>
+
+
+  <div class="card">
+    <div class="tag">crypto</div>
+    <h3>sha-256</h3>
+
+    <textarea id="hashInput" placeholder="text to hash"></textarea>
+    <button onclick="hashText()">hash</button>
+
+    <div id="hashOutput" class="output">waiting for input</div>
+  </div>
+
+
+  <div class="card">
+    <div class="tag">encoding</div>
+    <h3>base64</h3>
+
+    <textarea id="base64Input" placeholder="text"></textarea>
+
+    <div class="actions">
+      <button onclick="encode64()">encode</button>
+      <button onclick="decode64()">decode</button>
+    </div>
+
+    <div id="base64Output" class="output">waiting for input</div>
+  </div>
+
+
+  <div class="card">
+    <div class="tag">developer</div>
+    <h3>uuid generator</h3>
+
+    <button onclick="makeUUID()">generate uuid</button>
+    <div id="uuidOutput" class="output">click generate</div>
+  </div>
+
+
+  <div class="card">
+    <div class="tag">security</div>
+    <h3>password generator</h3>
+
+    <input id="passwordLength" type="number" min="8" max="128" value="24">
+
+    <button onclick="makePassword()">generate password</button>
+
+    <div id="passwordOutput" class="output">click generate</div>
+  </div>
+
+
+  <div class="card">
+    <div class="tag">developer</div>
+    <h3>timestamp converter</h3>
+
+    <input id="timestampInput" placeholder="Unix timestamp or date">
+
+    <div class="actions">
+      <button onclick="timestampConvert()">convert</button>
+      <button onclick="timestampNow()">now</button>
+    </div>
+
+    <div id="timestampOutput" class="output">waiting for input</div>
+  </div>
+
+</div>
+
+<footer>calibexs tools</footer>
+
+</div>
+
+<script src="/shared-calibexs/particles.min.js?v=1"></script>
+<script src="/shared-calibexs/particles-config.js?v=1"></script>
+
+<script>
+
+
+async function dnsLookup() {
+  const name = document.getElementById("dnsName").value.trim();
+  const type = document.getElementById("dnsType").value;
+  const out = document.getElementById("dnsOutput");
+
+  if (!name) {
+    out.textContent = "enter a hostname";
+    return;
+  }
+
+  out.textContent = "looking up...";
+
+  try {
+    const r = await fetch(
+      "/api/dns?name=" + encodeURIComponent(name) +
+      "&type=" + encodeURIComponent(type)
+    );
+
+    const data = await r.json();
+
+    if (!data.Answer) {
+      out.textContent = "no records found";
+      return;
+    }
+
+    out.textContent = data.Answer.map(x =>
+      `${x.name}  TTL ${x.TTL}  ${x.data}`
+    ).join("\n");
+
+  } catch {
+    out.textContent = "lookup failed";
+  }
+}
+
+
+async function hashText() {
+  const text = document.getElementById("hashInput").value;
+
+  const data = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+
+  const hex = [...new Uint8Array(digest)]
+    .map(b => b.toString(16).padStart(2,"0"))
+    .join("");
+
+  document.getElementById("hashOutput").textContent = hex;
+}
+
+
+function encode64() {
+  try {
+    const text = document.getElementById("base64Input").value;
+
+    const bytes = new TextEncoder().encode(text);
+    let binary = "";
+
+    bytes.forEach(b => binary += String.fromCharCode(b));
+
+    document.getElementById("base64Output").textContent =
+      btoa(binary);
+
+  } catch {
+    document.getElementById("base64Output").textContent =
+      "encoding failed";
+  }
+}
+
+
+function decode64() {
+  try {
+    const raw = atob(
+      document.getElementById("base64Input").value.trim()
+    );
+
+    const bytes = Uint8Array.from(raw, c => c.charCodeAt(0));
+
+    document.getElementById("base64Output").textContent =
+      new TextDecoder().decode(bytes);
+
+  } catch {
+    document.getElementById("base64Output").textContent =
+      "invalid base64";
+  }
+}
+
+
+function makeUUID() {
+  document.getElementById("uuidOutput").textContent =
+    crypto.randomUUID();
+}
+
+
+function makePassword() {
+  const length = Math.min(
+    128,
+    Math.max(
+      8,
+      Number(document.getElementById("passwordLength").value) || 24
+    )
+  );
+
+  const chars =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ" +
+    "abcdefghijkmnopqrstuvwxyz" +
+    "23456789!@#$%^&*_-+=";
+
+  const values = new Uint32Array(length);
+  crypto.getRandomValues(values);
+
+  let password = "";
+
+  for (const n of values) {
+    password += chars[n % chars.length];
+  }
+
+  document.getElementById("passwordOutput").textContent =
+    password;
+}
+
+
+function timestampNow() {
+  const unix = Math.floor(Date.now()/1000);
+
+  document.getElementById("timestampInput").value = unix;
+  timestampConvert();
+}
+
+
+function timestampConvert() {
+  const value =
+    document.getElementById("timestampInput").value.trim();
+
+  let date;
+
+  if (/^\d+$/.test(value)) {
+    let n = Number(value);
+
+    if (value.length <= 10) n *= 1000;
+
+    date = new Date(n);
+  } else {
+    date = new Date(value);
+  }
+
+  if (isNaN(date.getTime())) {
+    document.getElementById("timestampOutput").textContent =
+      "invalid timestamp/date";
+    return;
+  }
+
+  document.getElementById("timestampOutput").textContent =
+    `Unix: ${Math.floor(date.getTime()/1000)}
+Local: ${date.toLocaleString()}
+UTC: ${date.toUTCString()}
+ISO: ${date.toISOString()}`;
+}
+
+
+function ipToInt(ip) {
+  const p = ip.split(".").map(Number);
+
+  if (
+    p.length !== 4 ||
+    p.some(x => x < 0 || x > 255 || !Number.isInteger(x))
+  ) return null;
+
+  return (
+    ((p[0] << 24) >>> 0) +
+    (p[1] << 16) +
+    (p[2] << 8) +
+    p[3]
+  ) >>> 0;
+}
+
+
+function intToIp(n) {
+  return [
+    (n >>> 24) & 255,
+    (n >>> 16) & 255,
+    (n >>> 8) & 255,
+    n & 255
+  ].join(".");
+}
+
+
+function subnet() {
+  const input = document.getElementById("cidr").value.trim();
+  const out = document.getElementById("subnetOutput");
+
+  const parts = input.split("/");
+
+  if (parts.length !== 2) {
+    out.textContent = "use format: 192.168.1.10/24";
+    return;
+  }
+
+  const ip = ipToInt(parts[0]);
+  const prefix = Number(parts[1]);
+
+  if (
+    ip === null ||
+    !Number.isInteger(prefix) ||
+    prefix < 0 ||
+    prefix > 32
+  ) {
+    out.textContent = "invalid IPv4 CIDR";
+    return;
+  }
+
+  const mask =
+    prefix === 0
+      ? 0
+      : (0xffffffff << (32-prefix)) >>> 0;
+
+  const network = (ip & mask) >>> 0;
+  const broadcast = (network | (~mask >>> 0)) >>> 0;
+
+  const total = 2 ** (32-prefix);
+
+  let first = network;
+  let last = broadcast;
+  let usable = total;
+
+  if (prefix <= 30) {
+    first = network + 1;
+    last = broadcast - 1;
+    usable = total - 2;
+  }
+
+  out.textContent =
+`IP: ${intToIp(ip)}
+Prefix: /${prefix}
+Mask: ${intToIp(mask)}
+Network: ${intToIp(network)}
+Broadcast: ${intToIp(broadcast)}
+First host: ${intToIp(first)}
+Last host: ${intToIp(last)}
+Addresses: ${total}
+Usable hosts: ${usable}`;
+}
+</script>
+
+</body>
+</html>

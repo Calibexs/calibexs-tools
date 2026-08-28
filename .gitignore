@@ -1,0 +1,12 @@
+# Server-only shared assets
+shared-calibexs
+
+# Backups
+*.bak
+*.bak-*
+*.old
+
+# Local/editor files
+.DS_Store
+.vscode/
+.idea/
