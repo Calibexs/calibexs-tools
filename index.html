@@ -268,13 +268,271 @@ footer {
 }
 </style>
 
+
+<style id="tools-mobile-cleanup">
+@media (max-width: 768px) {
+
+  .wrap {
+    padding-top: 18px !important;
+  }
+
+  nav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 18px !important;
+    margin-bottom: 72px !important;
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .nav-links a {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 10px 16px !important;
+    white-space: nowrap !important;
+  }
+
+  .hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .hero h1 {
+    margin-top: 0 !important;
+  }
+}
+</style>
+
+<link rel="stylesheet" href="/shared-calibexs/navigation.css?v=1">
+
+<style id="cx-tools-polish-css">
+/* Calibexs Tools refinement */
+.cx-site-nav {
+  margin-bottom:0;
+}
+nav .cx-site-nav a {
+  font-size:13px;
+  padding:9px 14px;
+}
+.cx-tools-controls {
+  margin:0 0 30px;
+  max-width:100%;
+}
+.cx-tools-controls label {
+  display:block;
+  margin-bottom:12px;
+  color:#c9a5ef;
+  font-weight:700;
+  font-size:13px;
+}
+#cx-tools-search {
+  max-width:650px;
+  margin:0 0 16px;
+}
+.cx-filter-bar {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.cx-filter-bar button {
+  background:rgba(168,85,247,.09);
+  border:1px solid rgba(168,85,247,.25);
+  border-radius:999px;
+  color:#d5b4ff;
+  padding:9px 15px;
+  font-size:13px;
+}
+.cx-filter-bar button[aria-pressed="true"] {
+  background:rgba(168,85,247,.24);
+  border-color:#a855f7;
+  color:#fff;
+}
+#cx-tool-count {
+  color:#aa96bf;
+  font-size:12px;
+  margin:12px 0 0;
+}
+.cards > .card[hidden] {display:none!important;}
+.cx-copy-button {
+  margin-top:10px;
+  border:1px solid rgba(168,85,247,.3);
+  background:rgba(168,85,247,.1);
+  border-radius:10px;
+  color:#d9b5ff;
+  font-size:12px;
+}
+@media(max-width:850px) {
+  nav .cx-site-nav {
+    width:100%;
+    justify-content:flex-start;
+  }
+  nav .cx-site-nav a {
+    font-size:12px;
+    padding:8px 12px;
+  }
+}
+</style>
+
+<style id="cx-extra-tools-style">
+.cx-tool-note {
+  font-size:12px;
+  line-height:1.6;
+  color:#bba8cf;
+  margin:10px 0;
+}
+</style>
+
+<style id="cx-tools-v2-css">
+#cx-tools-directory {
+  margin:0 0 38px;
+}
+.cx-directory-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:20px;
+}
+.cx-directory-head h2 {
+  margin:0 0 5px;
+  font-size:24px;
+  letter-spacing:-.5px;
+}
+.cx-directory-head p {
+  margin:0;
+  color:#b7a4ce;
+  font-size:13px;
+}
+#cx-directory-total {
+  color:#c49af4;
+  font-size:12px;
+}
+.cx-directory-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.cx-directory-link {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:15px;
+  border:1px solid rgba(183,135,232,.16);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+  color:#e9ddf7;
+  font-size:13px;
+  text-decoration:none;
+  transition:background .2s,border-color .2s;
+}
+.cx-directory-link:hover {
+  background:rgba(168,85,247,.12);
+  border-color:rgba(168,85,247,.4);
+}
+.cx-directory-link[hidden] {display:none;}
+.cx-directory-link span:last-child {
+  color:#b48adb;
+}
+.cards > .card {
+  scroll-margin-top:20px;
+}
+.cards > .card:target {
+  border-color:rgba(168,85,247,.7);
+  box-shadow:0 0 0 1px rgba(168,85,247,.18);
+}
+.cx-tool-error {
+  color:#fca5a5;
+  margin-top:10px;
+  font-size:12px;
+  line-height:1.5;
+}
+.cx-tool-error:empty {display:none;}
+.cx-copy-button {
+  margin-top:12px;
+}
+.cx-copy-button:disabled {
+  cursor:not-allowed;
+  opacity:.4;
+}
+#cx-tools-search {
+  width:100%;
+  max-width:100%;
+}
+@media(max-width:900px) {
+  .cx-directory-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:700px) {
+  .wrap {
+    padding-left:16px;
+    padding-right:16px;
+  }
+  .cards {
+    grid-template-columns:minmax(0,1fr);
+    gap:14px;
+  }
+  .cards > .card {
+    min-width:0;
+    padding:20px;
+    border-radius:20px;
+  }
+  .hero {
+    padding-bottom:30px;
+  }
+  .hero h1 {
+    font-size:clamp(58px,14vw,90px);
+    letter-spacing:-3px;
+  }
+  .hero p {
+    font-size:16px;
+    line-height:1.6;
+  }
+  .cx-directory-grid {
+    grid-template-columns:1fr;
+  }
+  .cx-directory-link {
+    min-height:48px;
+  }
+  .card .row {
+    grid-template-columns:minmax(0,1fr);
+  }
+  .card input,
+  .card textarea,
+  .card select {
+    min-width:0;
+    font-size:16px;
+  }
+  .card .actions button {
+    flex:1 1 auto;
+  }
+  .card button {
+    min-height:42px;
+  }
+  .output {
+    font-size:12px;
+    max-width:100%;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .cx-directory-link {transition:none;}
+}
+</style>
+
 </head>
 
 <body class="calibexs-theme">
 
-<a class="calibexs-home" href="https://calibexs.com/">
-    ← calibexs.com
-</a>
+
 
 
 <div id="particles-js" class="calibexs-particles"></div>
@@ -284,10 +542,15 @@ footer {
 <nav>
   <div class="logo"><span>@calibexs</span></div>
 
-  <div class="nav-links">
-    <a href="https://calibexs.com/">main site</a>
-    <a href="https://status.calibexs.com/">status</a>
-  </div>
+  <div class="nav-links cx-site-nav">
+  <a href="https://calibexs.com/">home</a>
+  <a href="https://calibexs.com/projects/">builds</a>
+  <a href="https://calibexs.com/network/">network</a>
+  <a href="https://calibexs.com/journal/">journal</a>
+  <a href="https://calibexs.com/gallery/">gallery</a>
+  <a href="https://calibexs.com/cars/">cars</a>
+  <a href="https://calibexs.com/musse-dawit/">about</a>
+</div>
 </nav>
 
 <section class="hero">
@@ -295,6 +558,33 @@ footer {
   <p>
     networking, encoding, hashing, developer, and security utilities.
   </p>
+</section>
+
+
+<section class="cx-tools-controls" aria-label="Find utilities">
+  <label for="cx-tools-search">find a tool</label>
+  <input id="cx-tools-search" type="search"
+         placeholder="Search utilities..."
+         autocomplete="off">
+  <div class="cx-filter-bar" aria-label="Tool categories">
+    <button type="button" data-filter="all" aria-pressed="true">all</button>
+    <button type="button" data-filter="network">networking</button>
+    <button type="button" data-filter="security">security</button>
+    <button type="button" data-filter="developer">developer</button>
+  </div>
+  <p id="cx-tool-count" aria-live="polite"></p>
+</section>
+
+
+<section id="cx-tools-directory" aria-label="Tool directory">
+  <div class="cx-directory-head">
+    <div>
+      <h2>tool directory</h2>
+      <p>Choose a utility to jump directly to it.</p>
+    </div>
+    <span id="cx-directory-total"></span>
+  </div>
+  <div id="cx-directory-links" class="cx-directory-grid"></div>
 </section>
 
 <div class="cards">
@@ -391,6 +681,109 @@ footer {
 
     <div id="timestampOutput" class="output">waiting for input</div>
   </div>
+
+
+<!-- CALIBEXS EXTRA TOOLS -->
+
+<article class="card" id="cx-ip-address">
+  <div class="tag">network</div>
+  <h3>ip address analyzer</h3>
+  <input id="cx-ip" placeholder="192.168.1.4"><button data-cx-tool="ip">analyze</button>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+<article class="card" id="cx-json-tool">
+  <div class="tag">developer</div>
+  <h3>json formatter</h3>
+  <textarea id="cx-json" placeholder='{"hello":"world"}'></textarea><div class="actions"><button data-cx-tool="json-pretty">format</button><button data-cx-tool="json-mini">minify</button></div>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+<article class="card" id="cx-url-tool">
+  <div class="tag">encoding</div>
+  <h3>url encoder / decoder</h3>
+  <textarea id="cx-url" placeholder="Text or encoded URL component"></textarea><div class="actions"><button data-cx-tool="url-encode">encode</button><button data-cx-tool="url-decode">decode</button></div>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+<article class="card" id="cx-jwt-tool">
+  <div class="tag">security</div>
+  <h3>jwt decoder</h3>
+  <textarea id="cx-jwt" placeholder="Paste a test JWT (not a live credential)"></textarea><button data-cx-tool="jwt">decode locally</button><p class="cx-tool-note">Decoding does not verify the signature. Avoid real access tokens.</p>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+<article class="card" id="cx-hex-tool">
+  <div class="tag">encoding</div>
+  <h3>text / hex converter</h3>
+  <textarea id="cx-hex" placeholder="Text or hexadecimal bytes"></textarea><div class="actions"><button data-cx-tool="hex-encode">text to hex</button><button data-cx-tool="hex-decode">hex to text</button></div>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+<article class="card" id="cx-sha512-tool">
+  <div class="tag">crypto</div>
+  <h3>sha-512</h3>
+  <textarea id="cx-sha512" placeholder="Text to hash"></textarea><button data-cx-tool="sha512">hash</button>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+<article class="card" id="cx-http-tool">
+  <div class="tag">developer</div>
+  <h3>http status reference</h3>
+  <input id="cx-http" placeholder="e.g. 404"><button data-cx-tool="http">look up</button>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+<article class="card" id="cx-port-tool">
+  <div class="tag">network</div>
+  <h3>port reference</h3>
+  <input id="cx-port" placeholder="e.g. 22, HTTPS, DNS"><button data-cx-tool="port">look up</button>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+
+<!-- CALIBEXS ADVANCED UTILITIES -->
+
+<article class="card" id="cx-ipv6-tool">
+  <div class="tag">network</div>
+  <h3>ipv6 expander</h3>
+  <input id="cx-ipv6" placeholder="2001:db8::1"
+         aria-label="IPv6 address">
+  <button type="button" data-cx-advanced="ipv6">
+    expand address
+  </button>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
+
+<article class="card" id="cx-headers-tool">
+  <div class="tag">security</div>
+  <h3>http header inspector</h3>
+  <textarea id="cx-headers"
+    placeholder="Paste HTTP response headers"
+    aria-label="HTTP response headers"></textarea>
+  <button type="button" data-cx-advanced="headers">
+    inspect headers
+  </button>
+  <div class="output" aria-live="polite">waiting for input</div>
+  <p class="cx-tool-note">
+    Analyzes pasted text locally. Does not contact the website.
+  </p>
+</article>
+
+<article class="card" id="cx-diff-tool">
+  <div class="tag">developer</div>
+  <h3>text diff checker</h3>
+  <textarea id="cx-diff-original"
+    placeholder="Original text"
+    aria-label="Original text"></textarea>
+  <textarea id="cx-diff-updated"
+    placeholder="Updated text"
+    aria-label="Updated text"></textarea>
+  <button type="button" data-cx-advanced="diff">
+    compare text
+  </button>
+  <div class="output" aria-live="polite">waiting for input</div>
+</article>
 
 </div>
 
@@ -646,5 +1039,229 @@ Usable hosts: ${usable}`;
 }
 </script>
 
+
+<script src="/extra-tools.js?v=1"></script>
+
+<script id="cx-tools-polish-js">
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = [...document.querySelectorAll(".cards > .card")];
+  const search = document.getElementById("cx-tools-search");
+  const filters = [...document.querySelectorAll("[data-filter]")];
+  const count = document.getElementById("cx-tool-count");
+  const directory = document.getElementById("cx-directory-links");
+  const total = document.getElementById("cx-directory-total");
+  let active = "all";
+
+  function category(card) {
+    const tag = (card.querySelector(".tag")?.textContent || "")
+      .trim().toLowerCase();
+    if (tag === "network") return "network";
+    if (tag === "security" || tag === "crypto") return "security";
+    return "developer";
+  }
+
+  function slug(value) {
+    return "tool-" + value.toLowerCase()
+      .replace(/[^a-z0-9]+/g,"-")
+      .replace(/^-|-$/g,"");
+  }
+
+  const entries = cards.map((card, index) => {
+    const name = card.querySelector("h3")?.textContent.trim()
+      || "Utility " + (index + 1);
+    if (!card.id) card.id = slug(name);
+    const link = document.createElement("a");
+    link.className = "cx-directory-link";
+    link.href = "#" + card.id;
+    const text = document.createElement("span");
+    text.textContent = name;
+    const arrow = document.createElement("span");
+    arrow.textContent = "↗";
+    arrow.setAttribute("aria-hidden","true");
+    link.append(text,arrow);
+    directory.append(link);
+    return {card,link,name:name.toLowerCase()};
+  });
+
+  total.textContent = entries.length + " utilities";
+
+  function refresh() {
+    const query = search.value.trim().toLowerCase();
+    let shown = 0;
+    entries.forEach(({card,link,name}) => {
+      const match =
+        (active === "all" || category(card) === active) &&
+        name.includes(query);
+      card.hidden = !match;
+      link.hidden = !match;
+      if(match) shown++;
+    });
+    count.textContent = shown + " of " + entries.length + " utilities";
+  }
+
+  search.addEventListener("input",refresh);
+  filters.forEach(button => {
+    button.addEventListener("click", () => {
+      active = button.dataset.filter;
+      filters.forEach(b => b.setAttribute(
+        "aria-pressed",String(b === button)
+      ));
+      refresh();
+    });
+  });
+
+  // Every output receives one reliable Copy button.
+  const placeholders = new Set([
+    "waiting for input","waiting for query",
+    "click generate","enter an ipv4 cidr",
+    "looking up...","no records found"
+  ]);
+
+  cards.forEach(card => {
+    const output = card.querySelector(".output");
+    if (!output) return;
+
+    // Remove buttons from the previous enhancement.
+    card.querySelectorAll(".cx-copy-button").forEach(b=>b.remove());
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "cx-copy-button";
+    button.textContent = "copy result";
+
+    let resetHandle;
+    function show(message) {
+      button.textContent = message;
+      clearTimeout(resetHandle);
+      resetHandle = setTimeout(()=>{
+        button.textContent = "copy result";
+      },1800);
+    }
+
+    button.addEventListener("click",async () => {
+      const value = output.textContent.trim();
+      if (!value || placeholders.has(value.toLowerCase()) ||
+          value.startsWith("Error:") ||
+          value.startsWith("Error —")) {
+        show("no result to copy");
+        return;
+      }
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(value);
+        } else {
+          const area = document.createElement("textarea");
+          area.value = value;
+          area.style.position = "fixed";
+          area.style.opacity = "0";
+          document.body.append(area);
+          area.select();
+          const ok = document.execCommand("copy");
+          area.remove();
+          if (!ok) throw Error("Clipboard unavailable");
+        }
+        show("copied!");
+      } catch {
+        show("copy failed");
+      }
+    });
+
+    card.append(button);
+
+    const error = document.createElement("div");
+    error.className = "cx-tool-error";
+    error.setAttribute("role","alert");
+    card.append(error);
+
+    card.querySelectorAll("input,textarea").forEach(input=>{
+      input.addEventListener("input",()=>{
+        error.textContent = "";
+        input.removeAttribute("aria-invalid");
+      });
+    });
+  });
+
+  refresh();
+});
+
+// Check inputs before the existing tool handlers execute.
+// Capture-phase validation works with existing inline
+// onclick functions and delegated extra-tools events.
+document.addEventListener("click",event=>{
+  const button = event.target.closest("button");
+  if (!button || !button.closest(".cards > .card")) return;
+  if (button.classList.contains("cx-copy-button")) return;
+
+  const card = button.closest(".card");
+  const error = card.querySelector(".cx-tool-error");
+  if (!error) return;
+
+  const id = card.id;
+  const action = button.dataset.cxTool || "";
+  const get = selector => document.getElementById(selector)?.value.trim() || "";
+  let message = "";
+  let input = null;
+
+  if (id === "tool-dns-lookup") {
+    input = document.getElementById("dnsName");
+    const name = get("dnsName");
+    if (!/^(?=.{1,253}$)(?!-)[a-z0-9_-]+(?:\.[a-z0-9_-]+)*\.?$/i.test(name))
+      message = "Enter a hostname, such as example.com";
+  } else if (id === "tool-subnet-calculator") {
+    input = document.getElementById("cidr");
+    const val = get("cidr");
+    const parts = val.split("/");
+    const octets = (parts[0] || "").split(".");
+    if (parts.length !== 2 ||
+        !/^\d{1,2}$/.test(parts[1]) ||
+        +parts[1] > 32 ||
+        octets.length !== 4 ||
+        octets.some(x => !/^(0|[1-9]\d{0,2})$/.test(x) || +x > 255))
+      message = "Enter valid IPv4 CIDR, such as 192.168.1.10/24";
+  } else if (id === "cx-ip-address") {
+    input = document.getElementById("cx-ip");
+    const octets = get("cx-ip").split(".");
+    if (octets.length !== 4 ||
+        octets.some(x => !/^(0|[1-9]\d{0,2})$/.test(x) || +x > 255))
+      message = "Enter a valid IPv4 address";
+  } else if (id === "cx-json-tool") {
+    input = document.getElementById("cx-json");
+    try {JSON.parse(input.value);}
+    catch {message="Enter valid JSON before formatting or minifying";}
+  } else if (id === "cx-jwt-tool") {
+    input = document.getElementById("cx-jwt");
+    if (!/^[\w-]+\.[\w-]+\.[\w-]*$/.test(input.value.trim()))
+      message = "Enter a three-part JWT (header.payload.signature)";
+  } else if (id === "cx-hex-tool" && action === "hex-decode") {
+    input = document.getElementById("cx-hex");
+    if (!/^(?:[0-9a-fA-F]{2}\s*)*$/.test(input.value.trim()))
+      message = "Enter valid hexadecimal byte pairs";
+  } else if (id === "cx-url-tool" && action === "url-decode") {
+    input = document.getElementById("cx-url");
+    try {decodeURIComponent(input.value.trim());}
+    catch {message="Invalid percent-encoded URL component";}
+  } else if (id === "tool-password-generator") {
+    input = document.getElementById("passwordLength");
+    const len = Number(input.value);
+    if (!Number.isInteger(len) || len < 8 || len > 128)
+      message = "Choose a password length between 8 and 128";
+  }
+
+  if (message) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    error.textContent = message;
+    if (input) {
+      input.setAttribute("aria-invalid","true");
+      input.focus();
+    }
+  } else {
+    error.textContent = "";
+  }
+},true);
+</script>
+
+
+<script src="/advanced-tools.js?v=1" defer></script>
 </body>
 </html>
